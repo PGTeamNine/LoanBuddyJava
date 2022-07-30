@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,27 +25,39 @@ import com.lti.service.PropertyService;
 
 @RestController
 @RequestMapping("/application")
+@CrossOrigin(origins = "*")
 public class LoanAppController {
 
 	@PersistenceContext
 	EntityManager em;
+	
 	@Autowired
 	CustomerService customerService;
+	
 	@Autowired
 	PropertyService propertyService;
+	
 	@Autowired
 	CustomerDao dao1;
+	
 	@Autowired
 	ContactService contactService;
+	
 	@Autowired
 	LoanAppService loanService;
 	
 	@PostMapping("/addApplication")
 	public String addLoanApplication(@RequestBody LoanAppDto dto) {
-		LoanApplication loanApp = dto.getLoanApp();
+		LoanApplication loanApp = new LoanApplication();
+		loanApp.setAppStatus(dto.getAppStatus());
+		loanApp.setLoanAmmount(dto.getLoanAmmount());
+		loanApp.setMaxLoanGrant(dto.getMaxLoanGrant());
+
 //		Customer customer = dao1.getCustomerById(dto.getCustomerId());
 		Customer customer = searchCustomerById(dto.getCustomerId());
 		loanApp.setCustomer(customer);
+//		customer.setLoanApp(loanApp);
+		
 		return loanService.addLoanApplication(loanApp);
 	}
 	

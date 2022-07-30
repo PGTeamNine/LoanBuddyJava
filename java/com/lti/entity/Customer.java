@@ -3,6 +3,7 @@ package com.lti.entity;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -37,10 +38,10 @@ public class Customer {
 	double customerIncome;
 	EmployementTypeEnum employmentType;
 	
-	@OneToOne(mappedBy = "customer")
+	@OneToOne(mappedBy = "customer",cascade=CascadeType.ALL)
 	Property property;
 	
-	@OneToOne(mappedBy = "customer")
+	@OneToOne(mappedBy = "customer", cascade = CascadeType.ALL)
 	LoanApplication loanApp;
 	
 

@@ -14,17 +14,19 @@ public class PropertyServiceImpl implements PropertyService {
 	
 	@Autowired
 	PropertyDao propDao;
+	
+	@Autowired
 	CustomerDao custDao;
 	
 	public String addProperty(Property property) {
 		// TODO Auto-generated method stub
 		try {
-//			Customer customer=custDao.getCustomerById(customerId);
+//			Customer customer=custDao.getCustomerById();
 //			System.out.println("Customer fetched");
 //			property.setCustomer(customer);
 //			System.out.println("Customer Set to prop");
 			Property property1 =propDao.addPropertyForACustomer(property);
-			//System.out.println("prop added and returned.");
+			System.out.println("prop added and returned.");
 			return "Property Added Succesfully.";
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -38,5 +40,11 @@ public class PropertyServiceImpl implements PropertyService {
 		return propDao.viewPropertyByCustomerId(customerId);
 		
 	}
+	
+//	public Customer searchCustomer(int customerId) {
+//		// TODO Auto-generated method stub
+//		return em.find(Customer.class, customerId);
+//
+//	}
 
 }

@@ -21,7 +21,7 @@ public class LoanApplication {
 	double loanAmmount;
 	AppStatusEnum appStatus;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne
 	@JoinColumn(name = "customerId")
 	Customer customer;
 	
@@ -33,11 +33,6 @@ public class LoanApplication {
 	public void setAppStatus(AppStatusEnum appStatus) {
 		this.appStatus = appStatus;
 	}
-
-
-	
-
-	
 
 	public double getMaxLoanGrant() {
 		return maxLoanGrant;

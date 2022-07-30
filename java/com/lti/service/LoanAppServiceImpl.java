@@ -18,9 +18,13 @@ public class LoanAppServiceImpl implements LoanAppService {
 		try {
 			
 			LoanApplication l = loanappDao.addOrUpdateApplication(loanApp);
+			System.out.println("Test");
+			
 			return "Loan Application Added.";
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
+//			System.out.println(e.getMessage());
+			e.printStackTrace();
 			return "Loan Application Not Added.";
 		}
 		

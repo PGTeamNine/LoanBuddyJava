@@ -25,8 +25,10 @@ public class LoanAppDaoImpl implements LoanAppDao {
 	@Transactional
 	public LoanApplication addOrUpdateApplication(LoanApplication loanApp) {
 		// TODO Auto-generated method stub
-//		loanApp.setAppStatus(AppStatusEnum.SENT_FOR_VERIFICARION);
+		loanApp.setAppStatus(AppStatusEnum.SENT_FOR_VERIFICARION);
 		LoanApplication loanAppPersisted=em.merge(loanApp);
+		System.out.println(loanAppPersisted.getLoanAppId());
+		System.out.println(loanAppPersisted.getCustomer().getCustomerId());
 		return loanAppPersisted;
 	}
 
@@ -43,6 +45,7 @@ public class LoanAppDaoImpl implements LoanAppDao {
 		// TODO Auto-generated method stub
 		Customer c = searchCustomer(customerId);
 		LoanApplication l = c.getLoanApp();
+		l.setCustomer(null);
 		return l;
 	}
 

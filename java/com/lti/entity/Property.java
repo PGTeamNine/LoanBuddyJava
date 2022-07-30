@@ -20,7 +20,7 @@ public class Property {
 	double propertyAmount;
 	PropertyType propertyType;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne
     @JoinColumn(name = "customerId")
 	Customer customer;
 

@@ -25,6 +25,7 @@ public class PropertyDaoImpl implements PropertyDao {
 		Customer c = searchCustomer(customerId);
 		//System.out.println(c.getName() + " " + c.getEmail());
 		Property p = c.getProperty();
+		p.setCustomer(null);
 		//System.out.println(p.getPropertyLocation());
 		return p;
 		// return dao1.getCustomerById(customerId).getProperty();
