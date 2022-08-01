@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.lti.dao.CustomerDao;
 import com.lti.entity.Customer;
+import com.lti.entity.Feedback;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {
@@ -47,6 +48,19 @@ public class CustomerServiceImpl implements CustomerService {
 	
 	public boolean login(int customerId, String password) {
 		return customerDao.login(customerId, password);
+	}
+
+	
+	public String addFeed(Feedback feed) {
+		// TODO Auto-generated method stub
+		Feedback f= customerDao.addFeed(feed);
+		return "Thank You For Feedback !";
+	}
+
+	
+	public List<Feedback> viewAllFeed() {
+		// TODO Auto-generated method stub
+		return customerDao.viewAllFeed();
 	}
 
 }

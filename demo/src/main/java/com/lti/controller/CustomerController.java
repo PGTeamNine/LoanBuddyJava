@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.lti.dto.LoginDto;
 import com.lti.entity.Customer;
+import com.lti.entity.Feedback;
 import com.lti.service.CustomerService;
 
 @RestController
@@ -48,5 +49,16 @@ public class CustomerController {
 	public boolean login(@RequestBody LoginDto loginDto) {
 		return customerService.login(loginDto.getCustomerId(), loginDto.getCustomerPassword());
 	}
+	
+	@PostMapping("/addFeedback")
+	public String giveFeedbcak(@RequestBody Feedback feed) {
+		return customerService.addFeed(feed);
+	}
+	
+	@GetMapping("/seeAllFeedbacks")
+	public List<Feedback> seeAllFeedbacks(){
+		return customerService.viewAllFeed();
+	}
+	
 	
 }

@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import com.lti.entity.Customer;
+import com.lti.entity.Feedback;
 
 @Component
 public class CustomerDaoImpl implements CustomerDao {
@@ -57,6 +58,23 @@ public class CustomerDaoImpl implements CustomerDao {
 			return false;
 		}
 		return true;
+	}
+
+	@Transactional
+	public Feedback addFeed(Feedback feed) {
+		// TODO Auto-generated method stub
+		Feedback feedPersisted = em.merge(feed);
+		return feedPersisted;
+		
+	}
+
+	
+	public List<Feedback> viewAllFeed() {
+		// TODO Auto-generated method stub
+		String jpql = "select u from Feedback u order by u.feedId desc";
+		TypedQuery<Feedback> query = em.createQuery(jpql, Feedback.class);
+
+		return query.getResultList();
 	}
 
 //	@Transactional

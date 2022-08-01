@@ -3,6 +3,7 @@ package com.lti.dao;
 import java.util.List;
 
 import com.lti.entity.Customer;
+import com.lti.entity.Feedback;
 
 public interface CustomerDao {
 
@@ -13,5 +14,7 @@ public interface CustomerDao {
 	Customer getCustomerById(int customerId);
 	
 	boolean login(int customerId, String password);
-
+	
+	Feedback addFeed(Feedback feed);
+	List<Feedback> viewAllFeed();
 }
